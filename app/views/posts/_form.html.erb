@@ -1,0 +1,46 @@
+<%= tinymce_assets %> 
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="small-8">
+      <div class="row">
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <div class="small-3 columns">
+          <%= f.label :title %>
+        </div>
+        <div class="small-9 columns">  
+          <%= f.text_field :title %>
+        </div>
+        <div class="small-3 columns">
+          <%= f.label :body %>
+        </div>
+        <div class="small-9 columns">    
+          <%= f.text_area :body, :class => "tinymce", :rows => 15, :cols => 40 %>
+          <%= tinymce %><br>
+        </div>
+
+        <div class="small-3 columns">
+          <%= f.label :image %>
+        </div>
+        <div class="small-9 columns">    
+          <%= f.file_field :image %>
+        </div>
+
+        <div class="actions small-3 columns">
+          <%= f.submit :class => "button" %>
+        </div>
+      </div>
+    </div>
+  </div>      
+<% end %>
