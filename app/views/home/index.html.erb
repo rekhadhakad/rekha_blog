@@ -13,7 +13,7 @@
 		</div>
 		<div class="large-8 columns">
 			<h4><%= post.title %></h4>
-			<p><%= post.body %> &nbsp;  &nbsp;  
+			<p><%= post.body.html_safe %> &nbsp;  &nbsp;  
 			  <%= link_to 'Read More..', post %><br>
 			  <span class="create_date"><%= post.created_at.strftime('%d %b %Y')%> &nbsp; <%= post.user.fullname if post.user.present?%></span>
 			  </p>
